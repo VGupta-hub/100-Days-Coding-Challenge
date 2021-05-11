@@ -1,0 +1,101 @@
+# creating a dictionary
+bag = dict()
+bag["books"] = 6
+bag["pens"] = 4
+bag["tissues"] = 3
+print(bag)
+bag["books"] = 8
+print(bag)
+
+# counting with dictionaries to see how many times a name occurs in a list
+counts = dict()
+names = ["csev", "cwen", "csev", "zqian", "cwen"]
+for name in names:
+    if name not in counts:
+        counts[name] = 1
+    else:
+        counts[name] = counts[name] + 1
+print(counts)
+
+## the get method for dictionaries (pattern of checking if a key is already in a dictionary
+## and assuming a default value if a key is not there
+counts = dict()
+names = ["csev", "cwen", "csev", "zqian", "cwen"]
+for name in names:
+    counts[name] = counts.get(name, 0) + 1
+print(counts)
+
+# # counting pattern with split, loops and get function
+counts = dict()
+line = input("Enter a line of text: ")
+
+words = line.split()
+print(words)
+for word in words:
+    counts[word] = counts.get(word,0) + 1
+print("Counts", counts)
+
+# # for loop for dictionaries which goes through all the entries (keys) in the dictionary and looks up the values
+counts = {"charles": 1, "joe": 35, "sam": 72}
+for key in counts:
+    print(key, counts[key])
+
+# Retrieving lists of keys and values, items and counts
+counts = {"charles": 1, "joe": 35, "sam": 72}
+print(list(counts))
+print(counts.keys())
+print(counts.values())
+print(counts.items())
+
+# #Creating an empty dictionary, for loops, and counting pattern with split, two nested loops and get function
+name = "C:/Users/vgupt/Desktop/Python/mbox-short.txt"
+handle = open(name)
+
+counts = dict()
+for line in handle:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word,0) + 1
+print(counts)
+
+bigcount = None
+bigword = None
+for word,count in counts.items():
+    if bigcount is None or count>bigcount:
+        bigword = word
+        bigcount = count
+
+print(bigword, bigcount)
+
+
+# Assigment Exercise
+# Write a program to read through the mbox-short.txt and figure out who has sent the greatest number of mail messages.
+# The program looks for 'From ' lines and takes the second word of those lines as the person who sent the mail.
+# The program creates a Python dictionary that maps the sender's mail address to a count of the number of times they appear in the file.
+# After the dictionary is produced, the program reads through the dictionary using a maximum loop to find the most prolific committer.
+
+name = "C:/Users/vgupt/Desktop/Python/mbox-short.txt"
+handle = open(name)
+counts=dict()
+lst=[]
+for line in handle:
+    line=line.rstrip()
+    if line.startswith("From "):
+        line=line.split()
+        email=line[1]
+        lst.append(email)
+#print(lst)
+
+counts=dict()
+for email in lst:
+    counts[email]=counts.get(email,0)+1
+#print(counts.items())
+
+bigcount = None
+email_address = None
+for key,value in counts.items():
+    if bigcount is None or value > bigcount:
+        bigcount = value
+        email_address = key
+
+print (email_address, bigcount)
