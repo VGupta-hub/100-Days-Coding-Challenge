@@ -45,7 +45,7 @@ filename= "university_records.csv"
 # writing to a csv file
 with open(filename, "w") as csvfile:
     # creating a csv writer object
-    csvwriter = csv.write("csvfile")
+    csvwriter = csv.writer(csvfile)
     # writing the fields
     csvwriter.writerow(fields)
     # writing the data rows
