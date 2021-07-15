@@ -4,3 +4,8 @@
 > View(penguins)
 > ggplot(data = penguins)+geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g))
 > ggplot(data=penguins)+geom_point(mapping=aes(x=bill_length_mm, y=bill_depth_mm))
+
+> hotel_bookings = read.csv("C:/Users/vgupt/Desktop/Coursera/R/hotel_bookings.csv")
+> head(hotel_bookings)
+> colnames(hotel_bookings)
+
